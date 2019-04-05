@@ -17,43 +17,39 @@ namespace ConsoleApp1
         {
             Program p = new Program();
             p.Beowulf = new ArrayList();
+            p.ReadTextFiles();
+
+            Console.ReadLine();
         }
         public void Run()
         {
             this.ReadTextFiles();
         }
+
         public void ReadTextFiles()
         {
-            using (StreamReader file = new StreamReader("U:\\Users\\732136\\Beowulf")) ;
+            using (StreamReader file = new StreamReader("U:\\Users\\732136\\Beowulf\\Beowulf.txt"))
             {
+
                 int counter = 0;
                 string ln;
+
                 while ((ln = file.ReadLine()) != null)
                 {
                     Console.WriteLine(ln);
                     Beowulf.Add(ln);
                 }
-                File.Close();
-                Console.WriteLine($"File has{counter} lines.");
+                file.Close();
+
+                counter = File.ReadLines("U:\\Users\\732136\\Beowulf\\Beowulf.txt").Count();
+
+                Console.WriteLine("lines in the file is :" + counter);
+
+
+
             }
         }
-        public int FindNumberOfBlankSpaces(string line)
-        {
-            int countletters = 0;
-            int countSpaces = 0;
-            foreach (char c in line)
-            {
-                if (char.IsLetter(c))
-                {
-                    countletters++;
-                }
-                if (char.IsWhiteSpace(c))
-                {
-                    countSpaces++;
-                }
-                return countSpaces;
-            }
-        }
+     
+
     }
-
-
+}
