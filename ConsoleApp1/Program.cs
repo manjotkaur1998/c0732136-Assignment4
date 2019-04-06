@@ -9,142 +9,139 @@ using System.IO;
 
 namespace ConsoleApp1
 {
-    class Program
+    namespace ConsoleApp1
     {
-        ArrayList Beowulf;
-        static void Main(string[] args)
+        class Program
         {
-            Program p = new Program();
-            p.Beowulf = new ArrayList();
-            p.ReadTextFiles();
-            p.ReadTextFile();
-            p.SectionC();
-            p.SectionD();
-
-            Console.ReadKey();
-
-
-        }
-        public void Run()
-        {
-            this.ReadTextFile();
-        }
-        public void ReadTextFiles()
-        {
-            using (StreamReader file = new StreamReader("U:\\Users\\732136\\Beowulf\\Beowulf.txt"))
+            ArrayList Beowulf;
+            static void Main(string[] args)
             {
+                Program p = new Program();
+                p.Beowulf = new ArrayList();
+                p.ReadTextFiles();
+                p.ReadTextFile();
+                p.SectionE();
 
-                int counter = 0;
-                string ln;
+                Console.ReadKey();
 
-                while ((ln = file.ReadLine()) != null)
+
+            }
+            public void Run()
+            {
+                this.ReadTextFile();
+            }
+            public void ReadTextFiles()
+            {
+                using (StreamReader file = new StreamReader("U:\\Users\\732136\\Beowulf\\Beowulf.txt"))
                 {
 
-                    Beowulf.Add(ln);
+                    int counter = 0;
+                    string ln;
+
+                    while ((ln = file.ReadLine()) != null)
+                    {
+
+                        Beowulf.Add(ln);
+
+                    }
+
+                    file.Close();
+                    counter = File.ReadLines("U:\\Users\\732136\\Beowulf\\Beowulf.txt").Count();
+                    Console.WriteLine("File has {counter} lines.");
 
                 }
 
-                file.Close();
-                counter = File.ReadLines("U:\\Users\\732136\\Beowulf\\Beowulf.txt").Count();
-                Console.WriteLine($"File has {counter} lines.");
-
             }
 
-        }
-        public void SectionD()
-        {
-            int a = 0, b = 0, c = 0;
 
-            foreach (var line in File.ReadAllLines("U:\\Users\\732136\\Beowulf\\Beowulf.txt"))
-            {
-                if (line.Contains("fare"))
-                {
-                    a++;
-                }
-
-            }
-            foreach (var line in File.ReadAllLines("U:\\Users\\732136\\Beowulf\\Beowulf.txt"))
-            {
-                if (line.Contains("war") && line.Contains("fare"))
-                {
-                    b++;
-                }
-
-            }
-            c = a - b;
-            Console.WriteLine("lines which have war and see: " + c);
-        }
-        public void SectionC()
-
-        {
-            int a = 0;
-            foreach (var c in File.ReadAllLines("U:\\Users\\732136\\Beowulf\\Beowulf.txt"))
-            {
-                if (c.Contains("sea") && c.Contains("fare"))
-                {
-                    a++;
-                }
-
-            }
-            Console.WriteLine(" lines contain word sea and but not Fare:" + a);
-        }
-
-        public void ReadTextFile()
-        {
-
-            var reader = new StreamReader("U:\\Users\\732136\\Beowulf\\Beowulf.txt");
-            string script = reader.ReadToEnd();
-
-            var text = script.Trim();
-            int Count = 0, index = 0;
-
-            while (index < text.Length)
+            public void ReadTextFile()
             {
 
-                while (index < text.Length && !char.IsWhiteSpace(text[index]))
-                    index++;
+                var reader = new StreamReader("U:\\Users\\732136\\Beowulf\\Beowulf.txt");
+                string script = reader.ReadToEnd();
 
-                Count++;
+                var text = script.Trim();
+                int Count = 0, index = 0;
 
-                while (index < text.Length && char.IsWhiteSpace(text[index]))
-                    index++;
+                while (index < text.Length)
+                {
+
+                    while (index < text.Length && !char.IsWhiteSpace(text[index]))
+                        index++;
+
+                    Count++;
+
+                    while (index < text.Length && char.IsWhiteSpace(text[index]))
+                        index++;
+                }
+
+                Console.WriteLine(" Number of Words : " + Count);
+
             }
-
-            Console.WriteLine(" Number of Words are " + Count);
-
-        }
-
-
-        public int FindNumberOfBlankSpaces(string line)
-        {
-
-
-
-            int countletters = 0;
-            int countSpaces = 0;
-
-            foreach (char c in line)
+            public void SectionE()
             {
-                if (char.IsLetter(c))
-                {
-                    countletters++;
-                }
 
-                if (char.IsWhiteSpace(c))
+                StreamReader reader = new StreamReader("U:\\Users\\732136\\Beowulf\\Beowulf.txt");
+                string read = reader.ReadToEnd();
+                int number = 0;
+                foreach (char letter in read)
                 {
-                    countletters++;
+                    number++;
                 }
+                Console.WriteLine("total no. of letters after each word:  " + number);
+
             }
-            return countSpaces;
+
+
+            public int FindNumberOfBlankSpaces(string line)
+            {
+                https://stackoverflow.com/questions/17812566/count-words-and-spaces-in-string-c-sharp
+                int countletters = 0;
+                int countSpaces = 0;
+
+                foreach (char c in line)
+                {
+                    if (char.IsLetter(c)) { countletters++; }
+
+                    if (char.IsWhiteSpace(c)) { countletters++; }
+                }
+                return countSpaces;
+
+            }
+
+
+            public int FindNumberOfBlankSpaces6(string line)
+            {
+
+
+
+                int countletters = 0;
+                int countSpaces = 0;
+
+                foreach (char c in line)
+                {
+                    if (char.IsLetter(c))
+                    {
+                        countletters++;
+                    }
+
+                    if (char.IsWhiteSpace(c))
+                    {
+                        countletters++;
+                    }
+                }
+                return countSpaces;
+
+            }
+
+
+
+
+
 
         }
-
-
-
-
-
 
     }
-
 }
 
+    
