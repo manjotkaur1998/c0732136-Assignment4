@@ -18,6 +18,7 @@ namespace ConsoleApp1
             p.Beowulf = new ArrayList();
             p.ReadTextFiles();
             p.ReadTextFile();
+            p.SectionC();
 
             Console.ReadKey();
 
@@ -29,7 +30,7 @@ namespace ConsoleApp1
         }
         public void ReadTextFiles()
         {
-            using (StreamReader file = new StreamReader("U:\\Users\\732136\\Beowulf\\Beowulf.txt"))
+            using (StreamReader file = new StreamReader("U:\\Users\\732136\\Beowulf\\Beowulf.tx"))
             {
 
                 int counter = 0;
@@ -43,10 +44,24 @@ namespace ConsoleApp1
                 }
 
                 file.Close();
-                counter = File.ReadLines("U:\\Users\\732136\\Beowulf\\Beowulf.txt").Count();
+                counter = File.ReadLines("U:\\Users\\732136\\Beowulf\\Beowulf.tx").Count();
                 Console.WriteLine($"File has {counter} lines.");
 
             }
+        }
+        public void SectionC()
+
+        {
+            int a = 0;
+            foreach (var c in File.ReadAllLines("assignment.txt"))
+            {
+                if (c.Contains("sea") && c.Contains("fare"))
+                {
+                    a++;
+                }
+
+            }
+            Console.WriteLine("Total number of lines which contains word sea and Fare:" + a);
         }
 
         public void ReadTextFile()
