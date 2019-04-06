@@ -19,6 +19,7 @@ namespace ConsoleApp1
             p.ReadTextFiles();
             p.ReadTextFile();
             p.SectionC();
+            p.SectionD();
 
             Console.ReadKey();
 
@@ -30,7 +31,7 @@ namespace ConsoleApp1
         }
         public void ReadTextFiles()
         {
-            using (StreamReader file = new StreamReader("U:\\Users\\732136\\Beowulf\\Beowulf.tx"))
+            using (StreamReader file = new StreamReader("U:\\Users\\732136\\Beowulf\\Beowulf.txt"))
             {
 
                 int counter = 0;
@@ -44,16 +45,40 @@ namespace ConsoleApp1
                 }
 
                 file.Close();
-                counter = File.ReadLines("U:\\Users\\732136\\Beowulf\\Beowulf.tx").Count();
+                counter = File.ReadLines("U:\\Users\\732136\\Beowulf\\Beowulf.txt").Count();
                 Console.WriteLine($"File has {counter} lines.");
 
             }
+
+        }
+        public void SectionD()
+        {
+            int a = 0, b = 0, c = 0;
+
+            foreach (var line in File.ReadAllLines("U:\\Users\\732136\\Beowulf\\Beowulf.txt"))
+            {
+                if (line.Contains("fare"))
+                {
+                    a++;
+                }
+
+            }
+            foreach (var line in File.ReadAllLines("U:\\Users\\732136\\Beowulf\\Beowulf.txt"))
+            {
+                if (line.Contains("war") && line.Contains("fare"))
+                {
+                    b++;
+                }
+
+            }
+            c = a - b;
+            Console.WriteLine("lines which have war and see: " + c);
         }
         public void SectionC()
 
         {
             int a = 0;
-            foreach (var c in File.ReadAllLines("assignment.txt"))
+            foreach (var c in File.ReadAllLines("U:\\Users\\732136\\Beowulf\\Beowulf.txt"))
             {
                 if (c.Contains("sea") && c.Contains("fare"))
                 {
@@ -61,7 +86,7 @@ namespace ConsoleApp1
                 }
 
             }
-            Console.WriteLine("Total number of lines which contains word sea and Fare:" + a);
+            Console.WriteLine(" lines contain word sea and but not Fare:" + a);
         }
 
         public void ReadTextFile()
